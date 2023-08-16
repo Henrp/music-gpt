@@ -16,18 +16,18 @@ export default function RootLayout({
 }) {
   return (
     <html className={robotoFlex.className} lang="en">
-      <body className="flex flex-col md:flex-row min-h-screen">
+      <body className="flex flex-col md:flex-row overflow-x-scroll">
         <header className="flex md:hidden sticky top-0 z-40">
           <Header />
         </header>
 
-        <div className="w-80 hidden md:flex h-screen">
+        {/* Sidebar: greater than md */}
+        <div className="hidden md:flex">
           <Sidebar />
         </div>
-        <main className="w-full h-full z-30 bg-yellow-100">
-          <div className="flex w-full max-w-screen-xl mx-auto grow bg-green-200">
-            {children}
-          </div>
+
+        <main className="flex-[1_1_0] overflow-auto">
+          <div className="max-w-screen-xl mx-auto">{children}</div>
         </main>
       </body>
     </html>
