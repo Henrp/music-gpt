@@ -10,8 +10,8 @@ import UserInfo from "./UserInfo";
 export default function Sidebar() {
   return (
     <div
-      className="w-80 flex flex-col grow
-    border-r border-slate-200 z-50"
+      className="w-80 h-full flex flex-col border-r-2 
+      border-slate-400 z-50 overflow-hidden"
     >
       <div className="p-2">
         <SidebarTop />

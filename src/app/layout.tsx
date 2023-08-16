@@ -22,12 +22,12 @@ export default function RootLayout({
         </header>
 
         {/* Sidebar: greater than md */}
-        <div className="hidden md:flex">
+        <div className="h-screen hidden md:flex">
           <Sidebar />
         </div>
 
-        <main className="flex-[1_1_0] overflow-auto">
-          <div className="max-w-screen-xl mx-auto">{children}</div>
+        <main className="grow overflow-auto z-30 bg-yellow-300">
+          <div className="h-full max-w-screen-xl mx-auto">{children}</div>
         </main>
       </body>
     </html>
