@@ -1,4 +1,6 @@
-import React from "react";
+"use client";
+
+import React, { useState } from "react";
 import SidebarTop from "./SidebarTop";
 import ChatHistories from "./ChatHistories";
 import UserInfo from "./UserInfo";
@@ -8,23 +10,33 @@ import UserInfo from "./UserInfo";
 // 3. User Info
 
 export default function Sidebar() {
+  const [isVisible, setIsVisible] = useState(true);
+
+  const toggleSidebar = () => {
+    setIsVisible(!isVisible);
+  };
+
   return (
     <div
-      className="w-80 h-full flex flex-col border-r-2 
-      border-slate-400 z-50 overflow-hidden"
+      className={`${isVisible ? "w-64" : "w-16"}
+      ease-in-out duration-300 bg-secondary
+      h-full flex flex-col border-r-2 
+      border-black/60 z-50 overflow-hidden`}
     >
       <div className="p-2">
-        <SidebarTop />
+        <SidebarTop isVisible={isVisible} toggleSidebar={toggleSidebar} />
       </div>
-
-      <div className="grow bg-blue-100">
-        <ChatHistories />
-        {/* keep it empty */}
-      </div>
-
-      <div className="p-2">
-        <UserInfo />
-      </div>
+      {isVisible && (
+        <div className="flex flex-col h-full">
+          <div className="grow">
+            <ChatHistories />
+            {/* keep it empty */}
+          </div>
+          <div className="p-2">
+            <UserInfo />
+          </div>
+        </div>
+      )}
     </div>
   );
 }
