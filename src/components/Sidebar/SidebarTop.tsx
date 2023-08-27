@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import LeftCloseIcon from "../ui/LeftCloseIcon";
 import RightOpenIcon from "../ui/RightOpenIcon";
+import Image from "next/image";
 
 type Props = {
   isVisible: boolean;
@@ -15,6 +16,12 @@ export default function SidebarTop({ isVisible, toggleSidebar }: Props) {
       {isVisible ? (
         <>
           <div className="flex justify-center">
+            <Image
+              src="/defaultProfilePic.jpeg"
+              width={30}
+              height={30}
+              alt="logo"
+            />
             <p className="ml-3 font-semibold text-2xl">MusicGPT</p>
           </div>
           <button onClick={toggleSidebar}>
