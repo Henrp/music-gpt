@@ -24,7 +24,7 @@ export default function ChatBox({
     >
       <input
         type="text"
-        placeholder="Ask about music history and theory..."
+        placeholder="Message MusicGPT..."
         className="flex-grow text-primaryDark focus:outline-none"
         value={message}
         onChange={handleInputChange}

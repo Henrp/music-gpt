@@ -6,12 +6,12 @@ export default function AppTitle() {
     <div className="flex">
       <Image
       className="pr-3"
-        src="/defaultProfilePic.jpeg"
-        width={60}
-        height={60}
+        src="/logo.png"
+        width={80}
+        height={80}
         alt="logo"
       />
-      <p className="font-bold text-4xl">MusicGPT</p>
+      <p className="font-bold text-5xl">MusicGPT</p>
     </div>
   );
 }

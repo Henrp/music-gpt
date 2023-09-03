@@ -21,7 +21,7 @@ export default function Sidebar() {
       className={`${isVisible ? "w-64" : "w-16"}
       ease-in-out duration-300 bg-secondary
       h-full flex flex-col border-r-2 
-      border-black/60 z-50 overflow-hidden`}
+      border-[#C0C0C0]/60 z-50 overflow-hidden`}
     >
       <div className="p-2">
         <SidebarTop isVisible={isVisible} toggleSidebar={toggleSidebar} />

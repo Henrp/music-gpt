@@ -17,7 +17,7 @@ export default function SidebarTop({ isVisible, toggleSidebar }: Props) {
         <>
           <div className="flex justify-center">
             <Image
-              src="/defaultProfilePic.jpeg"
+              src="/logo.png"
               width={30}
               height={30}
               alt="logo"
