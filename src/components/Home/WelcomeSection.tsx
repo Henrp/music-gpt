@@ -5,10 +5,14 @@ import AppTitle from "./AppTitle";
 import Examples from "./Examples";
 import ChatBox from "./ChatBox";
 import Limitations from "./Limitations";
+import { useConversationContext } from "@/contexts/ConversationProvider";
+import { SingleChatMessageType } from "@/types/MessageTypes";
+import ConversationAndChatbox from "./ConversationAndChatbox";
 
 export default function WelcomeSection() {
-  const [isConversationStarted, setIsConversationStarted] = useState(false);
-  const [message, setMessage] = useState("");
+  const { isConversationStarted, setIsConversationStarted } = useConversationContext();
+  const [message, setMessage] = useState<string>("");
+  const [chatMessages, setChatMessages] = useState<SingleChatMessageType[]>([]);
 
   const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
     setMessage(event.target.value);
@@ -23,12 +27,44 @@ export default function WelcomeSection() {
 
   const handleSubmit = () => {
     // do smt with message
-    if (message.trim() === "") {
-      return;
+    if (message.trim() !== "") {
+      console.log("Submitted: ", message);
+
+      if ( isConversationStarted === false) {
+        const newIsConversationStarted = true;
+        setIsConversationStarted(newIsConversationStarted);
+      }
+
+      const fakeResponse = "This is a fake response";
+
+      const newChatMessage: SingleChatMessageType = {
+        user: message,
+        ai: fakeResponse,
+      }
+
+      setChatMessages([...chatMessages, newChatMessage]);
+
+      setMessage("");
     }
-    console.log("Submitted: ", message);
-    setMessage("");
+    return;
   };
+
+  if (isConversationStarted ) {
+        return (
+          <div className="w-full h-full">
+            <ConversationAndChatbox chatMessages={chatMessages}/>
+            <div className="sticky bottom-0 flex flex-col w-full mt-3">
+              <ChatBox
+                message={message}
+                handleSubmit={handleSubmit}
+                handleKeyPress={handleKeyPress}
+                handleInputChange={handleInputChange}
+              />
+              <Limitations />
+            </div>
+          </div>
+        )
+    }
 
   return (
     <>
@@ -41,16 +77,13 @@ export default function WelcomeSection() {
           <Examples />
         </div>
 
-        <div className="w-full mt-3">
+        <div className="flex flex-col w-full mt-3">
           <ChatBox
             message={message}
             handleSubmit={handleSubmit}
             handleKeyPress={handleKeyPress}
             handleInputChange={handleInputChange}
           />
-        </div>
-
-        <div>
           <Limitations />
         </div>
       </div>

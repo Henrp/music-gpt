@@ -8,6 +8,7 @@
 
 import AppTitle from "@/components/Home/AppTitle";
 import ChatBox from "@/components/Home/ChatBox";
+import ConversationAndChatbox from "@/components/Home/ConversationAndChatbox";
 import Examples from "@/components/Home/Examples";
 import Limitations from "@/components/Home/Limitations";
 import WelcomeSection from "@/components/Home/WelcomeSection";
@@ -22,7 +23,10 @@ export default async function Home() {
       flex flex-col justify-center items-center 
       bg-primary"
     >
-      <WelcomeSection />
+          {/* <ConversationAndChatbox /> */}
+    
+          <WelcomeSection />
+        
     </section>
   );
 }
