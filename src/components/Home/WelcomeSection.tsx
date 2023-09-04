@@ -53,7 +53,7 @@ export default function WelcomeSection() {
         return (
           <div className="w-full h-full">
             <ConversationAndChatbox chatMessages={chatMessages}/>
-            <div className="sticky bottom-0 flex flex-col w-full mt-3">
+            <div className="sticky bottom-0 flex flex-col w-100% mt-3 mb-4 pb-3"> {/*make so that when receive user input it does not change position*/}
               <ChatBox
                 message={message}
                 handleSubmit={handleSubmit}
