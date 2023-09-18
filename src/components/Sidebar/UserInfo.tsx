@@ -1,7 +1,12 @@
+import { useSession } from "next-auth/react";
 import Image from "next/image";
 import React from "react";
 
 export default function UserInfo() {
+  const { data } = useSession();
+
+  console.log(data);
+
   return (
     <div
       className="flex items-center justify-center px-4 py-3 mb-1
@@ -22,3 +27,5 @@ export default function UserInfo() {
     </div>
   );
 }
+
+// HW

@@ -7,10 +7,16 @@ import ConversationHeader from "./ConversationHeader";
 import ChatList from "./ChatList";
 
 type Props = {
-  chatMessages: SingleChatMessageType[];
+  userQueries: string[];
+  aiResponses: string[];
+  loading: boolean;
 };
 
-export default function ConversationAndChatbox({ chatMessages }: Props) {
+export default function ConversationAndChatbox({
+  userQueries,
+  aiResponses,
+  loading,
+}: Props) {
   const { isConversationStarted } = useConversationContext();
 
   if (!isConversationStarted) {
@@ -24,7 +30,11 @@ export default function ConversationAndChatbox({ chatMessages }: Props) {
       </div>
 
       <div className="max-w-screen-xl mx-auto">
-        <ChatList chatMessages={chatMessages} />
+        <ChatList
+          userQueries={userQueries}
+          aiResponses={aiResponses}
+          loading={loading}
+        />
       </div>
     </div>
   );

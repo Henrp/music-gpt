@@ -26,6 +26,12 @@ export default function Sidebar() {
       <div className="p-2">
         <SidebarTop isVisible={isVisible} toggleSidebar={toggleSidebar} />
       </div>
+
+      {/* New Chat */}
+      <div className="bg-white">
+        <button className=" h-2">New Chat</button>
+      </div>
+
       {isVisible && (
         <div className="flex flex-col h-full">
           <div className="grow">
