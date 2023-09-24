@@ -1,17 +1,8 @@
 import React from "react";
-import { ThreeDots } from "react-loader-spinner";
+import SyncLoader from "react-spinners/SyncLoader";
 
 export default function LoadingSpinner() {
   return (
-    <div>
-      <ThreeDots
-        height="40"
-        width="40"
-        radius="9"
-        color="#4fa94d"
-        ariaLabel="three-dots-loading-icon"
-        visible={true}
-      />
-    </div>
+    <SyncLoader color="#d9d9d9" margin={1} size={10} speedMultiplier={0.8} />
   );
 }
