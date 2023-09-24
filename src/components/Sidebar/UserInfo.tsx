@@ -4,6 +4,8 @@ import React from "react";
 
 export default function UserInfo() {
   const { data } = useSession();
+  const userName = data?.user?.name;
+  const userImage = data?.user?.image || "/defaultProfilePic.jpeg";
 
   console.log(data);
 
@@ -16,14 +18,14 @@ export default function UserInfo() {
       <div>
         <Image
           className="rounded-full"
-          src="/defaultProfilePic.jpeg"
+          src={userImage}
           width={30}
           height={30}
           alt="User Profile Picture"
         />
       </div>
 
-      <p className="ml-3 text-xl">Guest</p>
+      <p className="ml-3 text-xl">{userName}</p>
     </div>
   );
 }

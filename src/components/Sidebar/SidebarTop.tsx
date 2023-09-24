@@ -12,27 +12,31 @@ type Props = {
 
 export default function SidebarTop({ isVisible, toggleSidebar }: Props) {
   return (
-    <div className="flex justify-between items-center py-4 px-2">
+    <>
       {isVisible ? (
-        <>
-          <div className="flex justify-center">
+        <div className="flex items-center justify-center">
+          <div className="flex w-full border border-[#DFD7CB] rounded-md px-4 py-2">
             <Image
-              src="/logo.png"
-              width={30}
-              height={30}
-              alt="logo"
+              className="mr-2"
+              src={"/plus.svg"}
+              width={25}
+              height={25}
+              alt="plus icon"
             />
-            <p className="ml-3 font-semibold text-2xl">MusicGPT</p>
+            <button className=" text-base font-medium">New Chat</button>
           </div>
-          <button onClick={toggleSidebar}>
+          <button
+            className="border border-[#DFD7CB] rounded-md p-1 ml-2"
+            onClick={toggleSidebar}
+          >
             <LeftCloseIcon />
           </button>
-        </>
+        </div>
       ) : (
         <button onClick={toggleSidebar}>
           <RightOpenIcon />
         </button>
       )}
-    </div>
+    </>
   );
 }

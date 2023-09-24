@@ -18,18 +18,17 @@ export default function Sidebar() {
 
   return (
     <div
-      className={`${isVisible ? "w-64" : "w-16"}
-      ease-in-out duration-300 bg-secondary
-      h-full flex flex-col border-r-2 
-      border-[#C0C0C0]/60 z-50 overflow-hidden`}
+      className={`${
+        isVisible
+          ? "w-64 bg-secondary border-r-2 border-[#C0C0C0]/60"
+          : "w-16 bg-primary"
+      }
+      ease-in-out duration-200 
+      h-full flex flex-col  
+       z-50 overflow-hidden`}
     >
       <div className="p-2">
         <SidebarTop isVisible={isVisible} toggleSidebar={toggleSidebar} />
-      </div>
-
-      {/* New Chat */}
-      <div className="bg-white">
-        <button className=" h-2">New Chat</button>
       </div>
 
       {isVisible && (
