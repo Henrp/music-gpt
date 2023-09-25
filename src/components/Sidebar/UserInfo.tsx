@@ -7,8 +7,6 @@ export default function UserInfo() {
   const userName = data?.user?.name;
   const userImage = data?.user?.image || "/defaultProfilePic.jpeg";
 
-  console.log(data);
-
   return (
     <div
       className="flex items-center justify-center px-4 py-3 mb-1

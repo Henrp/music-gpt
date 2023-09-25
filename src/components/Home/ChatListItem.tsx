@@ -13,7 +13,11 @@ type Props = {
 
 export default function ChatListItem({ type, msg, loading = false }: Props) {
   return (
-    <div className={`${type === "user" ? "pr-3" : "pl-3"} flex items-end`}>
+    <div
+      className={`flex ${
+        type === "user" ? "pr-3 justify-end mb-4" : "pl-3 justify-start"
+      } items-end`}
+    >
       {/*need to stop overflowing of words -> if a certain amount of word is reached go to next line. Also, user icon has to be on the right side bottom corner. Must follow down with the increasing text (same goes for ai)*/}
 
       {
