@@ -16,9 +16,21 @@ export default function ChatListItem({ type, msg, loading = false }: Props) {
     <div
       className={`flex ${
         type === "user" ? "pr-3 justify-end mb-4" : "pl-3 justify-start"
-      } items-end`}
+      } items-start`}
     >
       {/*need to stop overflowing of words -> if a certain amount of word is reached go to next line. Also, user icon has to be on the right side bottom corner. Must follow down with the increasing text (same goes for ai)*/}
+
+      {type === "ai" && (
+        <div className={`mr-2 h-10 w-10`}>
+          <Image
+            className="object-cover rounded-full"
+            src={"/defaultProfilePic.jpeg"}
+            width={80}
+            height={80}
+            alt="User profile picture"
+          />
+        </div>
+      )}
 
       {
         // if loading is true -> show loading icon
@@ -35,15 +47,17 @@ export default function ChatListItem({ type, msg, loading = false }: Props) {
         )
       }
 
-      <div className={`${type === "user" ? "ml-2" : "mr-2"} h-10 w-10`}>
-        <Image
-          className="object-cover rounded-full"
-          src={"/defaultProfilePic.jpeg"}
-          width={80}
-          height={80}
-          alt="User profile picture"
-        />
-      </div>
+      {type === "user" && (
+        <div className={`ml-2 h-10 w-10`}>
+          <Image
+            className="object-cover rounded-full"
+            src={"/defaultProfilePic.jpeg"}
+            width={80}
+            height={80}
+            alt="User profile picture"
+          />
+        </div>
+      )}
     </div>
   );
 }
