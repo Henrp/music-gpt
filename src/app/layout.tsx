@@ -26,24 +26,26 @@ export default async function RootLayout({
     <html className={robotoFlex.className} lang="en">
       <SessionProvider session={session}>
         <ConversationProvider>
-          <body className="flex flex-col md:flex-row">
-            <header className="flex md:hidden sticky top-0 z-40">
-              <Header />
-            </header>
-
-            {/* Sidebar: greater than md */}
-            <div className="h-screen hidden md:flex">
-              <Sidebar />
-            </div>
-
-            {!session ? (
+          {!session ? (
+            <body className="flex justify-center items-center bg-primary">
               <Login />
-            ) : (
+            </body>
+          ) : (
+            <body className="flex flex-col md:flex-row">
+              <header className="flex md:hidden sticky top-0 z-40">
+                <Header />
+              </header>
+
+              {/* Sidebar: greater than md */}
+              <div className="h-screen hidden md:flex">
+                <Sidebar />
+              </div>
+
               <main className="grow overflow-auto h-full z-30 bg-primary">
                 <div className="h-full mx-auto">{children}</div>
               </main>
-            )}
-          </body>
+            </body>
+          )}
         </ConversationProvider>
       </SessionProvider>
     </html>

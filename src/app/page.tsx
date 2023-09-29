@@ -18,15 +18,14 @@ export default async function Home() {
   // console.log(data);
 
   return (
-    <section
+    <div
       className="w-full h-full
       flex flex-col justify-center items-center 
       bg-primary"
     >
-          {/* <ConversationAndChatbox /> */}
-    
-          <WelcomeSection />
-        
-    </section>
+      {/* <ConversationAndChatbox /> */}
+
+      <WelcomeSection />
+    </div>
   );
 }
