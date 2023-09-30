@@ -42,11 +42,19 @@ export default function ChatRow({ id }: Props) {
 
   return (
     <Link href={`/chat/${id}`}>
-      <div className={`${active ? "bg-slate-300" : "bg-white"}`}>
+      {/* <p className={`${active ? "hidden" : ""}`}>Chat Histories...</p> */}
+
+      <div
+        className={`${
+          active ? "bg-slate-300" : "bg-white"
+        } flex items-center justify-between p-2 cursor-pointer`}
+      >
         <p>
           {messages?.docs[messages?.docs.length - 1]?.data().text || "New Chat"}
         </p>
-        <button onClick={removeChat}>Delete</button>
+        <button className={`${active ? "" : "hidden"}`} onClick={removeChat}>
+          Delete
+        </button>
       </div>
     </Link>
   );

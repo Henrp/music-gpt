@@ -18,8 +18,8 @@ export default function ChatBox({
 }: Props) {
   return (
     <div
-      className="w-5/12 min-w-[300px] mx-auto
-    flex px-4 py-2 bg-white shadow-lg
+      className="w-full max-w-[700px] mx-auto
+    flex px-4 py-3 bg-white shadow-sm
     border border-[#D9D9D9] rounded-xl"
     >
       <input
