@@ -110,9 +110,9 @@ export default function WelcomeSection() {
       </div>
 
       <div className="absolute bottom-0 w-full flex flex-col items-center mb-4">
-        <div>
+        {/* <div>
           <Examples />
-        </div>
+        </div> */}
 
         <div className="flex flex-col w-full mt-3">
           <ChatBox
