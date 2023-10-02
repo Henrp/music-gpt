@@ -30,7 +30,7 @@ export default function Conversation({
   // }
 
   return (
-    <div className="h-[5000px] w-full max-w-screen-xl mx-auto">
+    <div className="w-full max-w-screen-xl mx-auto">
       <ChatList
         userQueries={userQueries}
         aiResponses={aiResponses}

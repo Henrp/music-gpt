@@ -41,9 +41,9 @@ export default function ChatList({
 
   // console.log("chatMdssages", chatMessages);
 
-  // chatMessages?.docs.map((doc, idx) => {
-  //   console.log(doc.data().text);
-  // });
+  chatMessages?.docs.map((doc, idx) => {
+    console.log(doc.data().text);
+  });
 
   return (
     <div className="flex flex-col">
