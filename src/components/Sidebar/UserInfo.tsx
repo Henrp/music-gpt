@@ -21,7 +21,7 @@ export default function UserInfo() {
       {showPopup && (
         <div
           className="absolute -translate-y-16 z-50 w-full bg-[#FFFCE8]
-        border border-black/20 rounded-xl
+        border border-black/20 rounded-lg
         flex items-center justify-between px-6 py-3 "
         >
           <p className="text-lg">Log out</p>
@@ -31,12 +31,13 @@ export default function UserInfo() {
         </div>
       )}
 
-      <div
-        className="w-full flex items-center justify-between px-6 py-3 mb-1
+      <button
+        className="w-full flex items-center justify-between px-4 py-3
       bg-[#FCFAF4]
-    border border-black/20 rounded-xl"
+    border-t border-black/20"
+        onClick={handleOnClick}
       >
-        <div className="flex items-center max-w-[80%]">
+        <div className="flex items-center w-full">
           <div>
             <Image
               className="rounded-full"
@@ -46,16 +47,12 @@ export default function UserInfo() {
               alt="User Profile Picture"
             />
           </div>
-
-          <p className="truncate ml-3 text-xl ">{userName}</p>
+          <p className="truncate ml-2 text-l font-semibold">{userName}</p>
+          <div className="flex-grow">
+            <ThreeDotsIcon />
+          </div>
         </div>
-
-        <button onClick={handleOnClick}>
-          <ThreeDotsIcon />
-        </button>
-      </div>
+      </button>
     </div>
   );
 }
-
-// HW

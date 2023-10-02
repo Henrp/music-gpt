@@ -41,7 +41,11 @@ export default function SidebarTop({ isVisible, toggleSidebar }: Props) {
     <>
       {isVisible ? (
         <div className="flex items-center justify-center">
-          <div className="flex w-full border border-[#DFD7CB] rounded-md px-4 py-2">
+          {/* NewChat Button */}
+          <button
+            className="flex w-full border border-[#DFD7CB] rounded-md px-4 py-2"
+            onClick={createNewChat}
+          >
             <Image
               className="mr-2"
               src={"/plus.svg"}
@@ -49,10 +53,10 @@ export default function SidebarTop({ isVisible, toggleSidebar }: Props) {
               height={25}
               alt="plus icon"
             />
-            <button className="text-base font-medium" onClick={createNewChat}>
-              New Chat
-            </button>
-          </div>
+            <div className="text-base font-medium">New Chat</div>
+          </button>
+
+          {/* Sidebar Close Button */}
           <button
             className="border border-[#DFD7CB] rounded-md p-1 ml-2"
             onClick={toggleSidebar}
@@ -61,7 +65,11 @@ export default function SidebarTop({ isVisible, toggleSidebar }: Props) {
           </button>
         </div>
       ) : (
-        <button onClick={toggleSidebar}>
+        // Sidebar Open Button
+        <button
+          className="border border-[#DFD7CB] rounded-md p-1"
+          onClick={toggleSidebar}
+        >
           <RightOpenIcon />
         </button>
       )}

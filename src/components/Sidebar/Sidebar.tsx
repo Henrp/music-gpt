@@ -50,7 +50,7 @@ export default function Sidebar() {
             <ChatHistories chats={chats} />
             {/* keep it empty */}
           </div>
-          <div className="p-2">
+          <div className="">
             <UserInfo />
           </div>
         </div>

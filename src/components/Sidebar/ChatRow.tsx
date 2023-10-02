@@ -7,6 +7,7 @@ import React, { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import { deleteDoc, doc } from "firebase/firestore";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 
 type Props = {
   id: string;
@@ -46,14 +47,19 @@ export default function ChatRow({ id }: Props) {
 
       <div
         className={`${
-          active ? "bg-slate-300" : "bg-white"
-        } flex items-center justify-between p-2 cursor-pointer`}
+          active ? "bg-white border rounded-lg" : "bg-secondary"
+        } flex items-center justify-between p-3 mx-1 cursor-pointer`}
       >
         <p>
           {messages?.docs[messages?.docs.length - 1]?.data().text || "New Chat"}
         </p>
         <button className={`${active ? "" : "hidden"}`} onClick={removeChat}>
-          Delete
+          <Image
+            src={"/trashbin.png"}
+            width={25}
+            height={25}
+            alt="trash icon"
+          />
         </button>
       </div>
     </Link>

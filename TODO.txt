@@ -1,1 +1,6 @@
 ChatBox.tsx - make margin on both side when shrinked 
+
+ChatHistories.tsx - should add new history if either
+    user inputs after opening new window
+    user clicks NewChat button and inputs
+
