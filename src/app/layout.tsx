@@ -7,7 +7,7 @@ import { ConversationProvider } from "@/contexts/ConversationProvider";
 import { SessionProvider } from "@/components/Auth/SessionProvider";
 import Google from "next-auth/providers/google";
 import { getServerSession } from "next-auth";
-import { authOptions } from "./api/auth/[...nextauth]/route";
+import { authOptions } from "@/configs/auth";
 import Login from "@/components/Auth/Login";
 
 export const metadata: Metadata = {
