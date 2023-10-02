@@ -1,10 +1,10 @@
-import WelcomeSection from "@/components/Home/WelcomeSection";
+import ChatPageWrapper from "@/components/Home/ChatPageWrapper";
 import React from "react";
 
-export default function ChatPage() {
+export default function ChatPage({ params }: { params: { id: string } }) {
   return (
     <div>
-      <WelcomeSection />
+      <ChatPageWrapper chatId={params.id} />
     </div>
   );
 }

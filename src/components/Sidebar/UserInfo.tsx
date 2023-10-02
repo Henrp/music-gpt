@@ -37,8 +37,8 @@ export default function UserInfo() {
     border-t border-black/20"
         onClick={handleOnClick}
       >
-        <div className="flex items-center w-full">
-          <div>
+        <div className="flex items-center justify-between w-full">
+          <div className="flex items-center">
             <Image
               className="rounded-full"
               src={userImage}
@@ -46,11 +46,10 @@ export default function UserInfo() {
               height={30}
               alt="User Profile Picture"
             />
+            <p className="truncate ml-2 text-l font-semibold">{userName}</p>
           </div>
-          <p className="truncate ml-2 text-l font-semibold">{userName}</p>
-          <div className="flex-grow">
-            <ThreeDotsIcon />
-          </div>
+
+          <ThreeDotsIcon />
         </div>
       </button>
     </div>

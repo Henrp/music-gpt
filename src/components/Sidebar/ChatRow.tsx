@@ -29,6 +29,7 @@ export default function ChatRow({ id }: Props) {
     )
   );
 
+  // need to remove time delay after new chat button is pressed
   useEffect(() => {
     if (!pathname) return;
 

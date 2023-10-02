@@ -32,7 +32,7 @@ export default async function RootLayout({
             </body>
           ) : (
             <body className="flex flex-col md:flex-row">
-              <header className="flex md:hidden sticky top-0 z-40">
+              <header className="flex md:hidden sticky top-0 z-50">
                 <Header />
               </header>
 

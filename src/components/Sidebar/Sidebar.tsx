@@ -6,14 +6,18 @@ import ChatHistories from "./ChatHistories";
 import UserInfo from "./UserInfo";
 import { useSession } from "next-auth/react";
 import { useCollection } from "react-firebase-hooks/firestore";
-import { collection } from "firebase/firestore";
+import { collection, orderBy, query } from "firebase/firestore";
 import { db } from "@/configs/firebase";
 
 // 1. Open/Close Button + Website Name
 // 2. Chat Histories
 // 3. User Info
 
-export default function Sidebar() {
+type Props = {
+  isMobile?: boolean;
+};
+
+export default function Sidebar({ isMobile = false }: Props) {
   const [isVisible, setIsVisible] = useState(true);
 
   const toggleSidebar = () => {
@@ -26,7 +30,11 @@ export default function Sidebar() {
   // read data from firebase cloudstore using react-firebase-hooks
   // use email from session to find a dataset
   const [chats, loading, error] = useCollection(
-    session && collection(db, "users", session.user?.email!, "chats")
+    session &&
+      query(
+        collection(db, "users", session.user?.email!, "chats"),
+        orderBy("createdAt", "desc")
+      )
   );
 
   return (
@@ -37,10 +45,10 @@ export default function Sidebar() {
           : "w-16 bg-primary"
       }
       ease-in-out duration-200 
-      h-full flex flex-col  
-       z-50 overflow-hidden`}
+      ${isMobile && !isVisible ? "" : "h-full"} flex flex-col  
+       z-40 overflow-hidden`}
     >
-      <div className="p-2">
+      <div className="p-[7px]">
         <SidebarTop isVisible={isVisible} toggleSidebar={toggleSidebar} />
       </div>
 

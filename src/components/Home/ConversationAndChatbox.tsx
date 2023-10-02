@@ -18,6 +18,7 @@ export default function ConversationAndChatbox({
   loading,
 }: Props) {
   const { isConversationStarted } = useConversationContext();
+  console.log(userQueries);
 
   if (!isConversationStarted) {
     return <></>;
