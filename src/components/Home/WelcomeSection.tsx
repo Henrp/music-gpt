@@ -7,7 +7,7 @@ import ChatBox from "./ChatBox";
 import Limitations from "./Limitations";
 import { useConversationContext } from "@/contexts/ConversationProvider";
 import { SingleChatMessageType } from "@/types/MessageTypes";
-import ConversationAndChatbox from "./ConversationAndChatbox";
+import ConversationAndChatbox from "./Conversation";
 import {
   QuerySnapshot,
   addDoc,
@@ -19,6 +19,8 @@ import {
 import { useSession } from "next-auth/react";
 import { db } from "@/configs/firebase";
 import { useCollection } from "react-firebase-hooks/firestore";
+import Conversation from "./Conversation";
+import ConversationHeader from "./ConversationHeader";
 
 type Props = {
   chatId?: string;
@@ -80,6 +82,7 @@ export default function WelcomeSection({ chatId = "", pastChats }: Props) {
   const handleSubmit = async () => {
     // do smt with message
     if (message.trim() !== "") {
+      console.log("CHATID: ", chatId);
       console.log("Submitted: ", message);
 
       if (isConversationStarted === false) {
@@ -145,55 +148,57 @@ export default function WelcomeSection({ chatId = "", pastChats }: Props) {
     return;
   };
 
-  if (isConversationStarted) {
-    return (
-      <div className="w-full h-full">
-        <ConversationAndChatbox
-          userQueries={userQueries}
-          aiResponses={aiResponses}
-          pastChats={pastChats}
-          loading={loading}
-        />
-        <div className="sticky bottom-0 flex flex-col w-100% mt-3 mb-4 pb-3">
-          {/*make so that when receive user input it does not change position*/}
-          <ChatBox
-            message={message}
-            handleSubmit={handleSubmit}
-            handleKeyPress={handleKeyPress}
-            handleInputChange={handleInputChange}
-          />
-          <Limitations />
-        </div>
-      </div>
-    );
+  // if (isConversationStarted) {
+  //   return (
+  //     <div className="w-full h-full">
+  //       <ConversationAndChatbox
+  //         userQueries={userQueries}
+  //         aiResponses={aiResponses}
+  //         pastChats={pastChats}
+  //         loading={loading}
+  //       />
+  //       <div className="sticky bottom-0 flex flex-col w-100% mt-3 mb-4 pb-3">
+  //         {/*make so that when receive user input it does not change position*/}
+  //         <ChatBox
+  //           message={message}
+  //           handleSubmit={handleSubmit}
+  //           handleKeyPress={handleKeyPress}
+  //           handleInputChange={handleInputChange}
+  //         />
+  //         <Limitations />
+  //       </div>
+  //     </div>
+  //   );
+  // }
+
+  if (chatId === "") {
+    return <AppTitle />;
   }
 
   return (
-    <>
-      {chatId === "" && <AppTitle />}
-
-      <div className="absolute bottom-0 w-full flex flex-col items-center mb-4">
-        {chatId !== "" && (
-          <ConversationAndChatbox
-            userQueries={userQueries}
-            aiResponses={aiResponses}
-            loading={loading}
-            chatId={chatId}
-          />
-        )}
-
-        {chatId !== "" && (
-          <div className="flex flex-col w-full mt-3">
-            <ChatBox
-              message={message}
-              handleSubmit={handleSubmit}
-              handleKeyPress={handleKeyPress}
-              handleInputChange={handleInputChange}
-            />
-            <Limitations />
-          </div>
-        )}
+    <div className="h-screen w-full flex flex-col items-center mb-4">
+      <div className="fixed w-full top-0 z-20">
+        <ConversationHeader chatId={chatId} />
       </div>
-    </>
+
+      <div className="mt-10 grow w-full">
+        <Conversation
+          userQueries={userQueries}
+          aiResponses={aiResponses}
+          loading={loading}
+          chatId={chatId}
+        />
+      </div>
+
+      <div className="sticky bottom-0 flex flex-col w-full mt-3 mb-4 pb-3">
+        <ChatBox
+          message={message}
+          handleSubmit={handleSubmit}
+          handleKeyPress={handleKeyPress}
+          handleInputChange={handleInputChange}
+        />
+        <Limitations />
+      </div>
+    </div>
   );
 }

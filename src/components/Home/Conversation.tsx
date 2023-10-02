@@ -15,7 +15,7 @@ type Props = {
   pastChats?: QuerySnapshot;
 };
 
-export default function ConversationAndChatbox({
+export default function Conversation({
   userQueries,
   aiResponses,
   loading,
@@ -30,20 +30,14 @@ export default function ConversationAndChatbox({
   // }
 
   return (
-    <div className="min-h-screen w-full">
-      <div className="sticky top-0 z-10">
-        <ConversationHeader chatId={chatId} />
-      </div>
-
-      <div className="mt-20 max-w-screen-xl mx-auto">
-        <ChatList
-          userQueries={userQueries}
-          aiResponses={aiResponses}
-          loading={loading}
-          chatId={chatId}
-          pastChats={pastChats}
-        />
-      </div>
+    <div className="h-[5000px] w-full max-w-screen-xl mx-auto">
+      <ChatList
+        userQueries={userQueries}
+        aiResponses={aiResponses}
+        loading={loading}
+        chatId={chatId}
+        pastChats={pastChats}
+      />
     </div>
   );
 }

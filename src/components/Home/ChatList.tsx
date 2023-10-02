@@ -21,7 +21,6 @@ export default function ChatList({
   chatId = "",
   pastChats,
 }: Props) {
-  const chatLength = pastChats?.docs.length || 0;
   // console.log(pastChats);
 
   const { data: session } = useSession();
@@ -42,17 +41,17 @@ export default function ChatList({
 
   // console.log("chatMdssages", chatMessages);
 
-  chatMessages?.docs.map((doc, idx) => {
-    console.log(doc.data().text);
-  });
+  // chatMessages?.docs.map((doc, idx) => {
+  //   console.log(doc.data().text);
+  // });
 
   return (
-    <div className="flex flex-col w-full h-full bg-green-300">
+    <div className="flex flex-col">
       {chatMessages?.docs.map((doc, idx) => (
         <div key={idx} className="mt-10">
           {idx % 2 === 0 ? (
             <ChatListItem type="user" msg={doc.data().text} />
-          ) : idx !== chatLength - 1 ? (
+          ) : idx !== chatMessages.docs.length - 1 ? (
             <ChatListItem type="ai" msg={doc.data().text} loading={false} />
           ) : (
             <ChatListItem type="ai" msg={doc.data().text} loading={loading} />

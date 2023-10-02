@@ -3,7 +3,7 @@ import Image from "next/image";
 
 export default function AppTitle() {
   return (
-    <div className="flex items-center">
+    <div className="flex h-full w-full justify-center items-center">
       <Image
         className="pr-3"
         src="/logo.png"
