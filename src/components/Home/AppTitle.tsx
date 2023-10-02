@@ -5,7 +5,7 @@ export default function AppTitle() {
   return (
     <div className="flex items-center">
       <Image
-      className="pr-3"
+        className="pr-3"
         src="/logo.png"
         width={80}
         height={80}
@@ -15,3 +15,4 @@ export default function AppTitle() {
     </div>
   );
 }
+// s
