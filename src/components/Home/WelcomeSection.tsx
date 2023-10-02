@@ -182,11 +182,11 @@ export default function WelcomeSection({
 
   return (
     <>
-      <div>
+      <div className={`${chatId === "" ? "" : "hidden"}`}>
         <AppTitle />
       </div>
 
-      <div className="absolute bottom-0 w-full flex flex-col items-center mb-4">
+      <div className="bg-red-200 fixed bottom-0 w-full flex flex-col items-center mb-4">
         {/* <div>
           <Examples />
         </div> */}

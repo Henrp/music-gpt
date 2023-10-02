@@ -51,7 +51,7 @@ export default function ChatRow({ id }: Props) {
           active ? "bg-white border rounded-lg" : "bg-secondary"
         } flex items-center justify-between p-3 mx-1 cursor-pointer`}
       >
-        <p>
+        <p className="truncate">
           {messages?.docs[messages?.docs.length - 1]?.data().text || "New Chat"}
         </p>
         <button className={`${active ? "" : "hidden"}`} onClick={removeChat}>
