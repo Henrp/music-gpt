@@ -9,6 +9,7 @@ import { useConversationContext } from "@/contexts/ConversationProvider";
 import { SingleChatMessageType } from "@/types/MessageTypes";
 import ConversationAndChatbox from "./ConversationAndChatbox";
 import {
+  QuerySnapshot,
   addDoc,
   collection,
   orderBy,
@@ -21,35 +22,21 @@ import { useCollection } from "react-firebase-hooks/firestore";
 
 type Props = {
   chatId?: string;
-  initialUserQueries?: string[];
-  initialAiResponses?: string[];
+  pastChats?: QuerySnapshot;
 };
 
-export default function WelcomeSection({
-  chatId = "",
-  initialUserQueries,
-  initialAiResponses,
-}: Props) {
+export default function WelcomeSection({ chatId = "", pastChats }: Props) {
   const { isConversationStarted, setIsConversationStarted } =
     useConversationContext();
   const [message, setMessage] = useState<string>("");
   // const [chatMessages, setChatMessages] = useState<SingleChatMessageType[]>([]);
 
-  const [userQueries, setUserQueries] = useState<string[]>(
-    initialUserQueries || []
-  );
-  const [aiResponses, setAiResponses] = useState<string[]>(
-    initialAiResponses || []
-  );
+  const [userQueries, setUserQueries] = useState<string[]>([]);
+  const [aiResponses, setAiResponses] = useState<string[]>([]);
 
   const [loading, setLoading] = useState<boolean>(false);
 
   const { data: session } = useSession();
-
-  // useEffect(() => {
-  //   console.log("chatId: ", chatId);
-
-  // }, [chatId]);
 
   const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
     setMessage(event.target.value);
@@ -164,6 +151,7 @@ export default function WelcomeSection({
         <ConversationAndChatbox
           userQueries={userQueries}
           aiResponses={aiResponses}
+          pastChats={pastChats}
           loading={loading}
         />
         <div className="sticky bottom-0 flex flex-col w-100% mt-3 mb-4 pb-3">
@@ -182,19 +170,17 @@ export default function WelcomeSection({
 
   return (
     <>
-      <div className={`${chatId === "" ? "" : "hidden"}`}>
-        <AppTitle />
-      </div>
+      {chatId === "" && <AppTitle />}
 
-      <div className="bg-red-200 fixed bottom-0 w-full flex flex-col items-center mb-4">
-        {/* <div>
-          <Examples />
-        </div> */}
-        <ConversationAndChatbox
-          userQueries={userQueries}
-          aiResponses={aiResponses}
-          loading={loading}
-        />
+      <div className="absolute bottom-0 w-full flex flex-col items-center mb-4">
+        {chatId !== "" && (
+          <ConversationAndChatbox
+            userQueries={userQueries}
+            aiResponses={aiResponses}
+            loading={loading}
+            chatId={chatId}
+          />
+        )}
 
         {chatId !== "" && (
           <div className="flex flex-col w-full mt-3">

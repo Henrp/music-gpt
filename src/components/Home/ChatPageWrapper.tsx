@@ -7,42 +7,29 @@ import { useCollection } from "react-firebase-hooks/firestore";
 import WelcomeSection from "./WelcomeSection";
 
 export default function ChatPageWrapper({ chatId }: { chatId: string }) {
-  const [userQueries, setUserQueries] = useState<string[]>([]);
-  const [aiResponses, setAiResponses] = useState<string[]>([]);
+  console.log("chat id: ", chatId);
 
-  const { data: session } = useSession();
-  const [chatMessages] = useCollection(
-    session &&
-      query(
-        collection(
-          db,
-          "users",
-          session.user?.email!,
-          "chats",
-          chatId,
-          "messages"
-        ),
-        orderBy("createdAt", "asc")
-      )
-  );
+  // const { data: session } = useSession();
+  // const [chatMessages] = useCollection(
+  //   session &&
+  //     query(
+  //       collection(
+  //         db,
+  //         "users",
+  //         session.user?.email!,
+  //         "chats",
+  //         chatId,
+  //         "messages"
+  //       ),
+  //       orderBy("createdAt", "asc")
+  //     )
+  // );
+
+  // console.log("chatMEssages", chatMessages);
 
   return (
-    <div>
-      <WelcomeSection
-        chatId={chatId}
-        initialUserQueries={chatMessages?.docs.map((doc, index) => {
-          if (index % 2 === 0) {
-            return doc.data().text;
-          }
-          return null;
-        })}
-        initialAiResponses={chatMessages?.docs.map((doc, index) => {
-          if (index % 2 === 1) {
-            return doc.data().text;
-          }
-          return null;
-        })}
-      />
+    <div className="w-full h-full flex justify-center">
+      <WelcomeSection chatId={chatId} />
     </div>
   );
 }

@@ -37,7 +37,7 @@ export default async function RootLayout({
               </header>
 
               {/* Sidebar: greater than md */}
-              <div className="h-screen hidden md:flex">
+              <div className="h-screen hidden md:block z-50">
                 <Sidebar />
               </div>
 

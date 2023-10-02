@@ -2,10 +2,20 @@
 
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 
-export default function ConversationHeader() {
+type Props = {
+  chatId?: string;
+};
+
+export default function ConversationHeader({ chatId = "" }: Props) {
+  if (chatId === "") {
+    return <></>;
+  }
+
   return (
-    <div
+    <Link
+      href="/"
       className="hidden md:flex 
     bg-[#EFEDE6] py-2.5 border-b border-primaryGrey items-center justify-center"
     >
@@ -17,6 +27,6 @@ export default function ConversationHeader() {
         alt="logo"
       />
       <div className="text-xl font-semibold">MusicGPT</div>
-    </div>
+    </Link>
   );
 }
