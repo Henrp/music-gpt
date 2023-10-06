@@ -1,7 +1,7 @@
 import React from "react";
 
 const exampleQuestions = [
-  "What is Music?",
+  "What is Music??",
   "Who is Johann Sebastian Bach?",
   "What is a half note?",
 ];
