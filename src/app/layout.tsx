@@ -9,6 +9,7 @@ import Google from "next-auth/providers/google";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/configs/auth";
 import Login from "@/components/Auth/Login";
+import { Analytics } from "@vercel/analytics/react";
 
 export const metadata: Metadata = {
   title: "Music GPT",
@@ -48,6 +49,7 @@ export default async function RootLayout({
           )}
         </ConversationProvider>
       </SessionProvider>
+      <Analytics />
     </html>
   );
 }
