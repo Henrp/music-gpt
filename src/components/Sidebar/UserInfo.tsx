@@ -19,16 +19,16 @@ export default function UserInfo() {
   return (
     <div className="relative flex flex-col items-center">
       {showPopup && (
-        <div
-          className="absolute -translate-y-16 z-50 w-full bg-[#FFFCE8]
-        border border-black/20 rounded-lg
-        flex items-center justify-between px-6 py-3 "
+        <button
+          onClick={() => signOut()}
+          className="absolute -translate-y-16 z-50 bg-[#FFFCE8]
+          border border-black/20 rounded-lg
+          flex items-center justify-between px-6 py-3 w-[245px] hover:bg-[#fffce891]"
         >
           <p className="text-lg">Log out</p>
-          <button onClick={() => signOut()}>
-            <LogoutIcon />
-          </button>
-        </div>
+
+          <LogoutIcon />
+        </button>
       )}
 
       <button

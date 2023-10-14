@@ -16,11 +16,11 @@ export default function Login() {
           height={60}
           alt="logo"
         />
-        <div className="text-3xl font-semibold">MusicGPT</div>
+        <div className="text-4xl font-semibold">MusicGPT</div>
       </div>
 
       <button
-        className="mt-4 flex justify-center items-center py-3 px-10 
+        className="mt-5 flex justify-center items-center py-3 px-10 
            rounded-xl bg-white hover:bg-neutral-100 transition-colors"
         onClick={() => signIn("google")}
       >
