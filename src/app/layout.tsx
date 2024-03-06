@@ -2,7 +2,7 @@ import { robotoFlex } from "@/utils/fonts/globalFont";
 import "./globals.css";
 import type { Metadata } from "next";
 import Sidebar from "@/components/Sidebar/Sidebar";
-import Header from "@/components/Header/Header";
+import Header from "@/components/Home/Header";
 import { ConversationProvider } from "@/contexts/ConversationProvider";
 import { SessionProvider } from "@/components/Auth/SessionProvider";
 import Google from "next-auth/providers/google";

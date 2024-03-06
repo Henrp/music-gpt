@@ -49,8 +49,8 @@ export default function SidebarTop({ isVisible, toggleSidebar }: Props) {
             <Image
               className="mr-2"
               src={"/plus.svg"}
-              width={25}
-              height={25}
+              width={20}
+              height={20}
               alt="plus icon"
             />
             <div className="text-base font-medium">New Chat</div>
