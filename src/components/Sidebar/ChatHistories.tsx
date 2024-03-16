@@ -12,13 +12,13 @@ export default function ChatHistories({ chats }: Props) {
     <div className="h-full flex-col items-center justify-center">
       {chats?.docs.map((chat) => (
         <div key={chat.id} className="flex-row">
-          <Image
+          {/* <Image
             className="flex"
             src="/chat_icon.png"
             width={20}
             height={20}
             alt="chat_icon"
-          />
+          /> */}
           <ChatRow id={chat.id} />
         </div>
       ))}

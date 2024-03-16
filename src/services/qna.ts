@@ -1,5 +1,4 @@
 // Query Logic
-
 import { Pinecone } from "@pinecone-database/pinecone";
 import { loadQAStuffChain } from "langchain/chains";
 import { OpenAIEmbeddings } from "langchain/embeddings/openai";
@@ -38,7 +37,12 @@ export const queryPineconeAndQueryLLM = async ({
 
   if (queryResponse.matches?.length) {
     // for now just basics
-    const llm = new OpenAI({});
+
+    const llm = new OpenAI({
+      modelName: "gpt-3.5-turbo",
+      openAIApiKey: process.env.OPENAI_API_KEY,
+    });
+
     // chain: chain of models
     const chain = loadQAStuffChain(llm);
     // combine queryResponse.matches together = creating context
