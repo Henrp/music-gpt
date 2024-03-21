@@ -43,7 +43,7 @@ export default function SidebarTop({ isVisible, toggleSidebar }: Props) {
         <div className="flex items-center justify-center">
           {/* NewChat Button */}
           <button
-            className="flex w-full border border-[#DFD7CB] rounded-md px-4 py-2"
+            className="flex w-full border border-[#DFD7CB] rounded-md px-4 py-2 hover:bg-[#F5F5F5]"
             onClick={createNewChat}
           >
             <Image
@@ -58,7 +58,7 @@ export default function SidebarTop({ isVisible, toggleSidebar }: Props) {
 
           {/* Sidebar Close Button */}
           <button
-            className="border border-[#DFD7CB] rounded-md p-1 ml-2"
+            className="border border-[#DFD7CB] rounded-md p-1 ml-2 hover:bg-[#F5F5F5]"
             onClick={toggleSidebar}
           >
             <LeftCloseIcon />

@@ -48,7 +48,9 @@ export default function ChatRow({ id }: Props) {
 
       <div
         className={`${
-          active ? "bg-white border rounded-lg" : "bg-secondary"
+          active
+            ? "bg-white border rounded-lg"
+            : "bg-secondary rounded-lg hover:bg-[#F5F5F5]"
         } flex items-center justify-between p-3 mx-1 cursor-pointer`}
       >
         <p className="truncate max-w-[65%]">
