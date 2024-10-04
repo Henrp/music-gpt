@@ -39,7 +39,7 @@ export const queryPineconeAndQueryLLM = async ({
     // for now just basics
 
     const llm = new OpenAI({
-      modelName: "gpt-3.5-turbo",
+      modelName: "gpt-4o-mini",
       openAIApiKey: process.env.OPENAI_API_KEY,
     });
 
